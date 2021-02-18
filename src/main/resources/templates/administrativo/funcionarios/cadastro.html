@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{administrativo/fragments/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<!--main content start-->
+	<section id="main-content" layout:fragment="corpo">
+		<section class="wrapper">
+			<h3>
+				<i class="fa fa-angle-right"></i> Cadastrar Funcionários
+			</h3>
+			<!-- BASIC FORM ELELEMNTS -->
+			<div class="row mt">
+				<div class="col-lg-12">
+					<div class="form-panel">
+						<form class="form-horizontal style-form"
+							action="/administrativo/funcionarios/salvarFuncionario"
+							method="POST" th:object="${funcionario}">
+							<input type="hidden" class="form-control input-sm" id="id"
+								th:field="*{id}" readOnly="readonly" />
+							<div class="form-group">
+								<label class="col-sm-1 control-label">Nome:</label>
+								<div class="col-sm-6">
+									<input th:field="*{nome}" id="nome" type="text"
+										class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1" for="cidade">Papel:
+									<span class="required">*</span>
+								</label>
+								<div class="col-sm-6">
+									<select th:field="*{papeis}" class="form-control">
+										<option value="0">Selecione um Papel</option>
+										<option th:each="p: ${papeis}" th:value="${p.id}"
+											th:text="${p.nome}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">Salário Bruto: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{salarioBruto}" id="name" required="required"
+										type="number" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">CPF: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{cpf}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">Data de
+									Nascimento: <span class="required">*</span>
+								</label>
+								<div class="col-sm-6">
+									<input th:field="*{dtNascimento}" id="name" required="required"
+										type="date" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">Telefone: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{telefone}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">Endereço: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{endereco}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">Número: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{numero}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1" for="cidade">Cidade:
+									<span class="required">*</span>
+								</label>
+								<div class="col-sm-6">
+									<select th:field="*{cidade}" class="form-control">
+										<option value="0">Selecione uma Cidade</option>
+										<option th:each="cid: ${cidades}" th:value="${cid.id}"
+											th:text="${cid.nome}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">E-mail: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{email}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">Senha: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{senha}" id="name" required="required"
+										type="password" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-6">
+									<button id="send" type="submit" class="btn btn-success">Salvar</button>
+									<button type="button" class="btn btn-primary">Cancelar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- col-lg-12-->
+			</div>
+			<!-- /row -->
+		</section>
+		<!-- /wrapper -->
+	</section>
+	<!-- /MAIN CONTENT -->
+	<!--main content end-->
+</body>
+</html>

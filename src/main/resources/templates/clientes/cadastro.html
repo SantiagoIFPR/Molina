@@ -1,0 +1,155 @@
+<!doctype html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{clientes/layout}">
+<head>
+<meta charset="utf-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<section layout:fragment="corpo">
+		<div class="single-product-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="product-content-right">
+							<div class="woocommerce">
+								<div class="woocommerce-info">
+									Novo no site? <a>Faça seu Cadastro!</a>
+								</div>
+								<form class="form-horizontal form-label-left"
+									action="/clientes/salvar" method="Post" th:object="${cliente}"
+									novalidate>
+
+									<input th:field="*{id}" readOnly="readonly"
+										class="form-control col-md-7 col-xs-12" type="hidden">
+
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="name">Nome: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{nome}" id="nome"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="text">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="name">CPF: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{cpf}" id="cpf"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="text">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="name">Data de Nascimento: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{dtNascimento}" id="dtNascimento"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="date">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="name">Telefone: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{telefone}" id="telefone"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="text">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="name">Endereço: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{endereco}" id="endereco"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="text">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="name">Número: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{numero}" id="numero"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="text">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="cidade">Cidade: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select th:field="*{cidade}" class="form-control">
+												<option th:each="cidade: ${cidades}" th:value="${cidade.id}"
+													th:text="${cidade.nome}"></option>
+											</select>
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="email">E-mail: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{email}" id="email"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="text">
+										</div>
+									</div>
+									<div class="item form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12"
+											for="senha">Senha: <span class="required">*</span></label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input th:field="*{senha}" id="senha"
+												class="form-control col-md-7 col-xs-12" required="required"
+												type="password">
+										</div>
+									</div>
+									<div class="ln_solid"></div>
+									<div class="form-group">
+										<div class="col-md-6 col-md-offset-3">
+											<button id="send" type="submit" class="btn btn-success">Salvar</button>
+											<button type="submit" class="btn btn-primary">Cancelar</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="woocommerce-info">
+							Já é cadastrado? <a>Faça seu Login!</a>
+						</div>
+						<form class="form-horizontal" action="/finalizar/login"
+							method="Post">
+							<div class="item form-group">
+								<label class="control-label col-md-3">E-mail: <span
+									class="required">*</span>
+								</label>
+								<div class="col-md-9">
+									<input class="form-control" required="required" type="text"
+										name="username">
+								</div>
+							</div>
+							<div class="item form-group">
+								<label class="control-label col-md-3">Senha: <span
+									class="required">*</span>
+								</label>
+								<div class="col-md-9">
+									<input class="form-control" required="required" type="password"
+										name="password">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-3">
+									<button type="submit" class="fv-btn">Efetuar Login</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

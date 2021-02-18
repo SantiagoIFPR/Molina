@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{administrativo/fragments/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<!--main content start-->
+	<section id="main-content" layout:fragment="corpo">
+		<section class="wrapper">
+			<h3>
+				<i class="fa fa-angle-right"></i>Listar Permissões
+			</h3>
+			<div class="row mb">
+				<!-- page start-->
+				<div class="content-panel">
+					<div class="adv-table">
+						<table cellpadding="0" cellspacing="0" border="0"
+							class="display table table-bordered" id="hidden-table-info">
+							<thead>
+
+								<tr>
+									<th></th>
+									<th>ID</th>
+									<th>Nome do Produto</th>
+									<th>Valor do Produto</th>
+									<th>Marca</th>
+									<th>Categoria</th>
+									<th>Quantidade em Estoque</th>
+									<th>Imagem</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="prod : ${produto}">
+									<td></td>
+									<td th:text="${prod.id}"></td>
+									<td th:text="${prod.nomeProduto}"></td>
+									<td th:text="${prod.valor}"></td>
+									<td th:text="${prod.marca}"></td>
+									<td th:text="${prod.categoria}"></td>
+									<td th:text="${prod.quantidadeEstoque}"></td>
+									<td><img
+										th:src="@{/administrativo/produtos/mostrarImagem/{imagem}(imagem=${prod.imagem})}"
+										width="100" /></td>
+									<td><a class="btn btn-warning btn-xs"
+										th:href="@{/administrativo/produtos/editarProduto/{id}(id=${prod.id})}">Editar</a>
+										<a class="btn btn-danger btn-xs"
+										th:href="@{/administrativo/produtos/removerProduto/{id}(id=${prod.id})}">Remover</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="form-group">
+							<a class="form-control input-md btn btn-sucess col-sm-6"
+								href="/administrativo/produtos/cadastrar">Adicionar novo Produto</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- page end-->
+			<!-- /row -->
+		</section>
+		<!-- /wrapper -->
+	</section>
+	<!-- /MAIN CONTENT -->
+	<!--main content end-->
+</body>
+
+</html>

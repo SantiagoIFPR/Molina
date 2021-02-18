@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{clientes/layout}">
+<head>
+<meta charset="utf-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<!-- Start Slider Area -->
+	<section layout:fragment="corpo">
+
+		<div class="product-big-title-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="product-bit-title text-center">
+							<h2>PRODUTOS</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="single-product-area">
+			<div class="zigzag-bottom"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6" th:each="produto : ${produtos}">
+						<div class="single-shop-product">
+							<div class="product-upper">
+								<img class="img-fluid"
+									th:src="@{/mostrarImagem/{imagem}(imagem=${produto.imagem})}">
+							</div>
+							<h2>
+								<a><span th:text="${produto.nomeProduto}"></span></a>
+							</h2>
+							<div class="product-carousel-price">
+								<ins>
+									R$<span th:text="${produto.valor}"></span>
+								</ins>
+							</div>
+
+							<div class="product-option-shop">
+								<a class="add_to_cart_button" data-quantity="1"
+									data-product_sku="" data-product_id="70" rel="nofollow"
+									th:href="@{/adicionarCart/{id}(id=${produto.id})}">Adicionar
+									no Carrinho</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

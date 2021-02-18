@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{administrativo/fragments/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<!--main content start-->
+	<section id="main-content" layout:fragment="corpo">
+		<section class="wrapper">
+			<h3>
+				<i class="fa fa-angle-right"></i> Cadastrar Entrada de Mercadorias
+			</h3>
+			<!-- BASIC FORM ELELEMNTS -->
+			<div class="row mt">
+				<div class="col-lg-12">
+					<div class="form-panel">
+						<form class="form-horizontal style-form"
+							action="/administrativo/entradas/salvarEntrada" method="Post"
+							th:object="${entrada}">
+							<input type="hidden" class="form-control input-sm" id="id"
+								th:field="*{id}" readOnly="readonly" />
+							<div class="form-group">
+								<label class="col-sm-1 control-label">Funcionário: <span
+									class="required">*</span>
+								</label>
+								<div class="col-sm-6">
+									<select th:field="*{funcionario}" class="form-control">
+										<option th:each="f: ${funcionarios}" th:value="${f.id}"
+											th:text="${f.nome}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1" for="name">Observação:
+									<span class="required">*</span>
+								</label>
+								<div class="col-sm-6">
+									<input th:field="*{observacao}" id="observacao"
+										class="form-control" required="required" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1" for="fornecedor">Fornecedor:
+									<span class="required">*</span>
+								</label>
+								<div class="col-sm-6">
+									<input th:field="*{fornecedor}" id="fornecedor"
+										class="form-control" required="required" type="text">
+								</div>
+							</div>
+							<div th:object="${itensEntrada}">
+
+								<div class="form-group">
+									<label class="control-label col-sm-1" for="produto">Produto:
+										<span class="required">*</span>
+									</label>
+									<div class="col-sm-6">
+										<select th:field="*{produto}" class="form-control">
+											<option th:each="prod: ${produtos}" th:value="${prod.id}"
+												th:text="${prod.nomeProduto}"></option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-1" for="quantidade">Quantidade:
+										<span class="required">*</span>
+									</label>
+									<div class="col-sm-6">
+										<input th:field="*{quantidade}" id="quantidade"
+											class="form-control" required="required" type="number">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-1" for="quantidade">Valor
+										de Custo: <span class="required">*</span>
+									</label>
+									<div class="col-sm-6">
+										<input th:field="*{valorCusto}" id="quantidade"
+											class="form-control" required="required" type="number"
+											step="0.01">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-1" for="quantidade">Valor
+										de Venda: <span class="required">*</span>
+									</label>
+									<div class="col-sm-6">
+										<input th:field="*{valorVenda}" id="quantidade"
+											class="form-control" required="required" type="number"
+											step="0.01">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-6">
+										<br>
+										<button id="add" name="acao" style="margin-top: 04px"
+											th:value="itens" type="submit" class="btn btn-success">Adicionar</button>
+									</div>
+								</div>
+								<table cellpadding="0" cellspacing="0" border="0"
+									class="display table table-bordered" id="hidden-table-info">
+									<thead>
+										<tr>
+											<th>Nome do Produto</th>
+											<th>Quantidade</th>
+											<th>Valor de Custo</th>
+											<th>Valor de Venda</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="itens : ${listaItens}">
+											<td th:text="${itens.produto.nomeProduto}"></td>
+											<td th:text="${itens.quantidade}"></td>
+											<td th:text="${itens.valorCusto}"></td>
+											<td th:text="${itens.valorVenda}"></td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="form-group">
+									<div class="col-sm-6">
+										<button id="send" name="acao" th:value="salvar" type="submit"
+											class="btn btn-success">Salvar</button>
+										<button type="submit" class="btn btn-primary">Cancelar</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- col-lg-12-->
+			</div>
+			<!-- /row -->
+		</section>
+		<!-- /wrapper -->
+	</section>
+	<!-- /MAIN CONTENT -->
+	<!--main content end-->
+</body>
+</html>

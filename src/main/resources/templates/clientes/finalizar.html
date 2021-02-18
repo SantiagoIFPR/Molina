@@ -1,0 +1,122 @@
+<!doctype html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{clientes/layout}">
+<head>
+<meta charset="utf-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<section layout:fragment="corpo">
+
+		<div class="product-big-title-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="product-bit-title text-center">
+							<h2>Finalizar Compra</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Page title area -->
+
+
+		<div class="single-product-area">
+			<div class="zigzag-bottom"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="product-content-right">
+							<div class="woocommerce">
+								<div>
+									<p>
+										Usuário Logado: <span th:text="${cliente.nome}"></span> &nbsp
+										- &nbsp &nbsp E-mail: <span th:text="${cliente.email}"></span>
+									<p>
+										Endereço: <span th:text="${cliente.endereco}"></span>,&nbsp<span
+											th:text="${cliente.numero}"></span> &nbsp - &nbsp<span
+											th:text="${cliente.cidade.nome}"></span>
+									</p>
+								</div>
+								<br>
+								<form action="/finalizar/confirmar" method="Post"
+									th:object="${compra}">
+									<table cellspacing="0" class="shop_table cart">
+										<thead>
+											<tr>
+												<th class="product-thumbnail">Produtos</th>
+												<th class="product-name">Nome</th>
+												<th class="product-price">Valor Unitário</th>
+												<th class="product-quantity">Quantidade</th>
+												<th class="product-subtotal">Total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="item : ${listaItens}">
+												<td class="product-thumbnail"><a href="#"><img
+														th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.imagem})}"
+														alt="product img" /></a></td>
+												<td class="product-name"><a><span
+														th:text="${item.produto.nomeProduto}"></span></a></td>
+												<td class="product-price"><span
+													th:text="${item.valorUnitario}" class="amount"></span></td>
+												<td class="product-quantity"><span
+													th:text="${item.quantidade}" class="amount"></span></td>
+												<td class="product-subtotal"><span
+													th:text="${item.valorTotal}"></span></td>
+											</tr>
+										</tbody>
+									</table>
+									<label class="control-label col-md-4" for="formapg">FORMA
+										DE PAGAMENTO: <span class="required">*</span>
+									</label>
+									<div class="col-6">
+										<select name="idForma" class="form-control">
+											<option th:each="f: ${formapg}" th:value="${f.id}"
+												th:text="${f.formaPagamento}"></option>
+										</select>
+									</div>
+									<div class="cart-collaterals">
+
+										<div class="cart_totals ">
+											<h2>TOTAL CARRINHO</h2>
+
+											<table cellspacing="0">
+												<tbody>
+													<tr class="cart-subtotal">
+														<th>Sub Total Carrinho</th>
+														<td><span th:text="${compra.valorTotal}"></span></td>
+													</tr>
+
+													<tr class="shipping">
+														<th>Frete</th>
+														<td>Frete Grátis</td>
+													</tr>
+
+													<tr class="order-total">
+														<th>Total Carrinho</th>
+														<td><strong><span
+																th:text="${compra.valorTotal}"></span></strong></td>
+													</tr>
+													<tr>
+														<td class="actions" colspan="6"><a href="/"><input
+																type="submit" value="Continuar Comprando"
+																name="update_cart" class="button"></a>
+															<button type="submit"
+																class="checkout-button button alt wc-forward">FINALIZAR</button></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{administrativo/fragments/layout}">
+<head>
+<meta charset="UTF-8">
+<title>Molina Store</title>
+</head>
+<body>
+	<!--main content start-->
+	<section id="main-content" layout:fragment="corpo">
+		<section class="wrapper">
+			<h3>
+				<i class="fa fa-angle-right"></i>Listar Formas de Pagamentos
+			</h3>
+			<div class="row mb">
+				<!-- page start-->
+				<div class="content-panel">
+					<div class="adv-table">
+						<table cellpadding="0" cellspacing="0" border="0"
+							class="display table table-bordered" id="hidden-table-info">
+							<thead>
+								<tr>
+									<th></th>
+									<th>ID</th>
+									<th>Nome</th>
+									<th>Parcela</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="f : ${formadepagamento}">
+									<td></td>
+									<td th:text="${f.id}"></td>
+									<td th:text="${f.formaPagamento}"></td>
+									<td th:text="${f.parcela}"></td>
+									<td><a class="btn btn-warning btn-xs"
+										th:href="@{/administrativo/formapagamentos/editarFormaPagamento/{id}(id=${f.id})}">Editar</a>
+										<a class="btn btn-danger btn-xs"
+										th:href="@{/administrativo/formapagamentos/removerFormaPagamento/{id}(id=${f.id})}">Remover</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="form-group">
+						<a class="form-control input-md btn btn-sucess col-sm-6"
+							href="/administrativo/formapagamentos/cadastrar">Adicionar nova Forma de Pagamento</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- page end-->
+			<!-- /row -->
+		</section>
+		<!-- /wrapper -->
+	</section>
+	<!-- /MAIN CONTENT -->
+	<!--main content end-->
+</body>
+
+</html>
