@@ -109,6 +109,15 @@
 							<li><a th:href="@{/administrativo/produtos/listar}">Listar
 									Produtos</a></li>
 						</ul></li>
+					<li class="sub-menu"><a href="javascript:;"> <i
+							class="fa fa-file"></i> <span>Relatórios</span>
+					</a>
+						<ul class="sub">
+							<li><a th:href="@{/administrativo/relatorios/cliente}">Clientes
+									Cadastrados</a></li>
+							<li><a th:href="@{/administrativo/relatorios/produto}">Produtos
+									Cadastrados</a></li>
+						</ul></li>
 			</div>
 		</aside>
 		<!--sidebar end-->
@@ -132,6 +141,8 @@
 	<script src="/assets/lib/sparkline-chart.js"></script>
 	<script src="/assets/lib/zabuto_calendar.js"></script>
 	<script type="application/javascript">
+		
+		
 		
 		
 		
@@ -175,6 +186,8 @@
       var to = $("#" + id).data("to");
       console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
+	
+	
 	
 	
 	
