@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.loja.Molina.Model.ItensCompra;
+import com.loja.Molina.Model.ItensVenda;
 import com.loja.Molina.Repository.ProdutoRepository;
 
 @Controller
@@ -17,7 +17,7 @@ public class IndexClienteController {
 	@Autowired
 	private ProdutoRepository repositoryProduto;
 	
-	private List<ItensCompra> ItensCompra = new ArrayList<ItensCompra>();
+	private List<ItensVenda> ItensCompra = new ArrayList<ItensVenda>();
 	
 	@GetMapping("/")
 	public ModelAndView index() {

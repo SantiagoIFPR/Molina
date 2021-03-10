@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loja.Molina.Model.Cliente;
-import com.loja.Molina.Model.Compra;
+import com.loja.Molina.Model.Venda;
 import com.loja.Molina.Model.FormaDePagamento;
-import com.loja.Molina.Model.ItensCompra;
+import com.loja.Molina.Model.ItensVenda;
 import com.loja.Molina.Model.Produto;
 import com.loja.Molina.Repository.ClienteRepository;
-import com.loja.Molina.Repository.CompraRepository;
+import com.loja.Molina.Repository.VendaRepository;
 import com.loja.Molina.Repository.FormaPagamentoRepository;
-import com.loja.Molina.Repository.ItensCompraRepository;
+import com.loja.Molina.Repository.ItensVendaRepository;
 import com.loja.Molina.Repository.ProdutoRepository;
 
 @Controller
@@ -38,19 +38,19 @@ public class CarrinhoController {
 	private FormaPagamentoRepository repositoryFormaPg;
 
 	@Autowired
-	private CompraRepository repositoryCompra;
+	private VendaRepository repositoryCompra;
 	
 	@Autowired
-	private ItensCompraRepository repositoryItens;
+	private ItensVendaRepository repositoryItens;
 	
-	private List<ItensCompra> ItensCompra = new ArrayList<ItensCompra>();
-	private Compra compra = new Compra();
+	private List<ItensVenda> ItensVenda = new ArrayList<ItensVenda>();
+	private Venda venda = new Venda();
 	private Cliente cliente;
 	
 	private void calcularTotal() {
-		compra.setValorTotal(0.);
-		for(ItensCompra it: ItensCompra) {
-			compra.setValorTotal(compra.getValorTotal()+it.getValorTotal());
+		venda.setValorTotal(0.);
+		for(ItensVenda it: ItensVenda) {
+			venda.setValorTotal(venda.getValorTotal()+it.getValorTotal());
 		}
 	}
 	
@@ -58,8 +58,8 @@ public class CarrinhoController {
 	public ModelAndView carrinho() {
 		ModelAndView mv = new ModelAndView("clientes/carrinho");
 		calcularTotal();
-		mv.addObject("compra", compra);
-		mv.addObject("listaItens", ItensCompra);
+		mv.addObject("venda", venda);
+		mv.addObject("listaItens", ItensVenda);
 		return mv;
 	}
 	
@@ -69,7 +69,7 @@ public class CarrinhoController {
 		Produto produto = prod.get();
 
 		int controle = 0;
-		for (ItensCompra it : ItensCompra) {
+		for (ItensVenda it : ItensVenda) {
 			if (it.getProduto().getId() == produto.getId()) {
 				it.setQuantidade(it.getQuantidade() + 1);
 				it.setValorTotal(0.);
@@ -80,12 +80,12 @@ public class CarrinhoController {
 		}
 
 		if (controle == 0) {
-			ItensCompra itens = new ItensCompra();
+			ItensVenda itens = new ItensVenda();
 			itens.setProduto(produto);
 			itens.setValorUnitario(produto.getValor());
 			itens.setQuantidade(itens.getQuantidade() + 1);
 			itens.setValorTotal(itens.getValorTotal()+(itens.getQuantidade() * itens.getValorUnitario()));
-			ItensCompra.add(itens);
+			ItensVenda.add(itens);
 		}
 		return "redirect:/carrinho";
 	}
@@ -93,7 +93,7 @@ public class CarrinhoController {
 	@GetMapping("/alterarQuantidade/{id}/{acao}")
 	public String alterarQuantidade(@PathVariable Long id, @PathVariable Integer acao) {
 		
-		for (ItensCompra it : ItensCompra) {
+		for (ItensVenda it : ItensVenda) {
 			if (it.getProduto().getId() == (id)) {
 				if(acao.equals(1)) {
 					it.setQuantidade(it.getQuantidade()+1);
@@ -114,9 +114,9 @@ public class CarrinhoController {
 	@GetMapping("/removerProduto/{id}")
 	public String removerProdutoCarrinho(@PathVariable Long id) {
 		
-		for (ItensCompra it : ItensCompra) {
+		for (ItensVenda it : ItensVenda) {
 			if (it.getProduto().getId() == (id)) {
-				ItensCompra.remove(it);
+				ItensVenda.remove(it);
 				break;
 			}
 		}
@@ -137,8 +137,8 @@ public class CarrinhoController {
 		buscarUsuarioLogado();
 		ModelAndView mv = new ModelAndView("clientes/finalizar");
 		calcularTotal();
-		mv.addObject("compra", compra);
-		mv.addObject("listaItens", ItensCompra);
+		mv.addObject("venda", venda);
+		mv.addObject("listaItens", ItensVenda);
 		mv.addObject("cliente", cliente);
 		mv.addObject("formapg", repositoryFormaPg.findAll());
 		return mv;
@@ -150,16 +150,16 @@ public class CarrinhoController {
 		Optional<FormaDePagamento> op = repositoryFormaPg.findById(idForma);
 		FormaDePagamento formaPagamento = op.get();
 		ModelAndView mv = new ModelAndView("clientes/finalizou");
-		compra.setFormaPagamento(formaPagamento);
-		compra.setCliente(cliente);
-		repositoryCompra.saveAndFlush(compra);
+		venda.setFormaPagamento(formaPagamento);
+		venda.setCliente(cliente);
+		repositoryCompra.saveAndFlush(venda);
 		
-		for (ItensCompra c : ItensCompra) {
-			c.setCompra(compra);
+		for (ItensVenda c : ItensVenda) {
+			c.setVenda(venda);
 			repositoryItens.saveAndFlush(c);
 		}
-		ItensCompra = new ArrayList<>();
-		compra = new Compra();
+		ItensVenda = new ArrayList<>();
+		venda = new Venda();
 		
 		return mv;
 	}
