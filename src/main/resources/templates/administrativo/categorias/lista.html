@@ -10,7 +10,7 @@
 	<section id="main-content" layout:fragment="corpo">
 		<section class="wrapper">
 			<h3>
-				<i class="fa fa-angle-right"></i>Listar Funcionários
+				<i class="fa fa-angle-right"></i>Listar Categorias
 			</h3>
 			<div class="row mb">
 				<!-- page start-->
@@ -23,41 +23,25 @@
 									<th></th>
 									<th>ID</th>
 									<th>Nome</th>
-									<th>Papel</th>
-									<th>CPF</th>
-									<th>Data de Nascimento</th>
-									<th>Telefone</th>
-									<th>Endereço</th>
-									<th>Número</th>
-									<th>Cidade</th>
-									<th>E-mail</th>
 									<th></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="f : ${funcionario}">
+								<tr th:each="cat : ${categoria}">
 									<td></td>
-									<td th:text="${f.id}"></td>
-									<td th:text="${f.nome}"></td>
-									<td th:text="${f.papeis.nome}"></td>
-									<td th:text="${f.cpf}"></td>
-									<td th:text="${f.dtNascimento}"></td>
-									<td th:text="${f.telefone}"></td>
-									<td th:text="${f.endereco}"></td>
-									<td th:text="${f.numero}"></td>
-									<td th:text="${f.cidade.nome}"></td>
-									<td th:text="${f.email}"></td>
+									<td th:text="${cat.id}"></td>
+									<td th:text="${cat.nome}"></td>
 									<td><a class="btn btn-warning btn-xs"
-										th:href="@{/administrativo/funcionarios/editarFuncionario/{id}(id=${f.id})}">Editar</a>
+										th:href="@{/administrativo/categorias/editarCategoria/{id}(id=${cat.id})}">Editar</a>
 										<a class="btn btn-danger btn-xs"
-										th:href="@{/administrativo/funcionarios/removerFuncionario/{id}(id=${f.id})}">Remover</a>
+										th:href="@{/administrativo/categorias/removerCategoria/{id}(id=${cat.id})}">Remover</a>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 						<div class="form-group">
-							<a class="form-control input-md btn btn-sucess col-sm-6"
-								href="/administrativo/funcionarios/cadastrar">Cadastrar novo Funcionário</a>
+						<a class="form-control input-md btn btn-sucess col-sm-6"
+							href="/administrativo/categorias/cadastrar">Adicionar nova Categoria</a>
 						</div>
 					</div>
 				</div>

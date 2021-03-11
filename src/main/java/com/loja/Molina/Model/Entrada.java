@@ -26,7 +26,8 @@ public class Entrada implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dataentrada = new Date();
 	private String observacao;
-	private String fornecedor;
+	@ManyToOne
+	private Fornecedor fornecedor;
 	public long getId() {
 		return id;
 	}
@@ -51,10 +52,13 @@ public class Entrada implements Serializable{
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	public String getFornecedor() {
+	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
-	public void setFornecedor(String fornecedor) {
+	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

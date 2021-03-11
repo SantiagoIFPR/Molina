@@ -14,6 +14,7 @@ import com.loja.Molina.Model.Entrada;
 import com.loja.Molina.Model.ItensEntrada;
 import com.loja.Molina.Model.Produto;
 import com.loja.Molina.Repository.EntradaRepository;
+import com.loja.Molina.Repository.FornecedorRepository;
 import com.loja.Molina.Repository.FuncionarioRepository;
 import com.loja.Molina.Repository.ItensEntradaRepository;
 import com.loja.Molina.Repository.ProdutoRepository;
@@ -34,6 +35,10 @@ public class EntradaController {
 
 	@Autowired
 	public ProdutoRepository repositoryProduto;
+	
+	@Autowired
+	public FornecedorRepository repositoryFornecedor;
+
 
 	@GetMapping("administrativo/entradas/cadastrar")
 	public ModelAndView add(Entrada entrada, ItensEntrada itens) {
@@ -43,6 +48,7 @@ public class EntradaController {
 		mv.addObject("itensEntrada", itens);
 		mv.addObject("funcionarios", repositoryFuncionario.findAll());
 		mv.addObject("produtos", repositoryProduto.findAll());
+		mv.addObject("fornecedor", repositoryFornecedor.findAll());
 		return mv;
 	}
 

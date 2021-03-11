@@ -67,41 +67,37 @@
 										</tbody>
 									</table>
 								</form>
+								<div class="cart_totals-1">
+									<h2>TOTAL CARRINHO</h2>
 
-								<div class="cart-collaterals">
+									<table cellspacing="0">
+										<tbody>
+											<tr class="cart-subtotal col-6">
+												<th>Sub Total Carrinho</th>
+												<td><span th:text="${venda.valorTotal}"></span></td>
+											</tr>
 
-									<div class="cart_totals ">
-										<h2>TOTAL CARRINHO</h2>
+											<tr class="shipping">
+												<th>Frete</th>
+												<td>Frete Grátis</td>
+											</tr>
 
-										<table cellspacing="0">
-											<tbody>
-												<tr class="cart-subtotal">
-													<th>Sub Total Carrinho</th>
-													<td><span th:text="${venda.valorTotal}"></span></td>
-												</tr>
-
-												<tr class="shipping">
-													<th>Frete</th>
-													<td>Frete Grátis</td>
-												</tr>
-
-												<tr class="order-total">
-													<th>Total Carrinho</th>
-													<td><strong><span
-															th:text="${venda.valorTotal}"></span></strong></td>
-												</tr>
-												<tr>
-													<td class="actions" colspan="6"><a href="/"><input
-															type="submit" value="Continuar Comprando"
-															name="update_cart" class="button"></a> <a
-														th:href="@{/finalizar}"
-														class="checkout-button button alt wc-forward"><input
-															type="submit" value="Finalizar Compra" name="proceed"
-															class="checkout-button button alt wc-forward"></a></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
+											<tr class="order-total">
+												<th>Total Carrinho</th>
+												<td><strong><span
+														th:text="${venda.valorTotal}"></span></strong></td>
+											</tr>
+											<tr>
+												<td class="actions" colspan="6"><a href="/"><input
+														type="submit" value="Continuar Comprando"
+														name="update_cart" class="button"></a> <a
+													th:href="@{/finalizar}"
+													class="checkout-button button alt wc-forward"><input
+														type="submit" value="Finalizar Compra" name="proceed"
+														class="checkout-button button alt wc-forward"></a></td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>

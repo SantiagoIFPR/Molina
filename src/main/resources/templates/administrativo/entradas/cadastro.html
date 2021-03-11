@@ -42,63 +42,57 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-1" for="fornecedor">Fornecedor:
-									<span class="required">*</span>
+								<label class="col-sm-1 control-label">Fornecedor: <span
+									class="required">*</span>
 								</label>
 								<div class="col-sm-6">
-									<input th:field="*{fornecedor}" id="fornecedor"
-										class="form-control" required="required" type="text">
+									<select th:field="*{fornecedor}" class="form-control">
+										<option th:each="f: ${fornecedor}" th:value="${f.id}"
+											th:text="${f.nome}"></option>
+									</select>
 								</div>
 							</div>
+							<hr>
 							<div th:object="${itensEntrada}">
 
-								<div class="form-group">
-									<label class="control-label col-sm-1" for="produto">Produto:
-										<span class="required">*</span>
-									</label>
-									<div class="col-sm-6">
-										<select th:field="*{produto}" class="form-control">
-											<option th:each="prod: ${produtos}" th:value="${prod.id}"
-												th:text="${prod.nomeProduto}"></option>
-										</select>
-									</div>
+								<label class="control-label col-sm-1" for="produto">Produto:
+									<span class="required">*</span>
+								</label>
+								<div class="col-md-2">
+									<select th:field="*{produto}" class="form-control">
+										<option th:each="prod: ${produtos}" th:value="${prod.id}"
+											th:text="${prod.nomeProduto}"></option>
+									</select>
 								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-1" for="quantidade">Quantidade:
-										<span class="required">*</span>
-									</label>
-									<div class="col-sm-6">
-										<input th:field="*{quantidade}" id="quantidade"
-											class="form-control" required="required" type="number">
-									</div>
+								<label class="control-label col-sm-1" for="quantidade">Quantidade:
+									<span class="required">*</span>
+								</label>
+								<div class="col-md-2">
+									<input th:field="*{quantidade}" id="quantidade"
+										class="form-control" required="required" type="number">
 								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-1" for="quantidade">Valor
-										de Custo: <span class="required">*</span>
-									</label>
-									<div class="col-sm-6">
-										<input th:field="*{valorCusto}" id="quantidade"
-											class="form-control" required="required" type="number"
-											step="0.01">
-									</div>
+								<label class="control-label col-sm-1" for="quantidade">Valor
+									de Custo: <span class="required">*</span>
+								</label>
+								<div class="col-sm-2">
+									<input th:field="*{valorCusto}" id="quantidade"
+										class="form-control" required="required" type="number"
+										step="0.01">
 								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-1" for="quantidade">Valor
-										de Venda: <span class="required">*</span>
-									</label>
-									<div class="col-sm-6">
-										<input th:field="*{valorVenda}" id="quantidade"
-											class="form-control" required="required" type="number"
-											step="0.01">
-									</div>
+								<label class="control-label col-sm-1" for="quantidade">Valor
+									de Venda: <span class="required">*</span>
+								</label>
+								<div class="col-sm-2">
+									<input th:field="*{valorVenda}" id="quantidade"
+										class="form-control" required="required" type="number"
+										step="0.01">
 								</div>
-								<div class="form-group">
-									<div class="col-sm-6">
-										<br>
-										<button id="add" name="acao" style="margin-top: 04px"
-											th:value="itens" type="submit" class="btn btn-success">Adicionar</button>
-									</div>
+								<br><br><br>
+								<div class="col-sm-1">
+									<button id="add" name="acao" th:value="itens" type="submit"
+										class="btn btn-success">Adicionar</button>
 								</div>
+								<br><Br><br>
 								<table cellpadding="0" cellspacing="0" border="0"
 									class="display table table-bordered" id="hidden-table-info">
 									<thead>

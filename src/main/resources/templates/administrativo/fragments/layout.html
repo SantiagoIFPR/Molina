@@ -68,6 +68,8 @@
 							class="fa fa-tasks"></i> <span>Cadastros</span>
 					</a>
 						<ul class="sub">
+							<li><a th:href="@{/administrativo/categorias/cadastrar}">Cadastrar
+									Categoria</a></li>
 							<li><a th:href="@{/administrativo/cidades/cadastrar}">Cadastrar
 									Cidade</a></li>
 							<li><a th:href="@{/clientes/cadastrar}">Cadastrar
@@ -76,6 +78,9 @@
 									Entrada</a></li>
 							<li><a th:href="@{/administrativo/estados/cadastrar}">Cadastrar
 									Estado</a></li>
+							<li><a
+								th:href="@{/administrativo/fornecedores/cadastrar}">Cadastrar
+									Fornecedor</a></li>		
 							<li><a
 								th:href="@{/administrativo/formapagamentos/cadastrar}">Cadastrar
 									Forma de Pagamento</a></li>
@@ -92,12 +97,16 @@
 							class="fa fa-bar-chart-o"></i> <span>Listas</span>
 					</a>
 						<ul class="sub">
+							<li><a th:href="@{/administrativo/categorias/listar}">Listar
+									Categorias</a></li>
 							<li><a th:href="@{/administrativo/cidades/listar}">Listar
 									Cidades</a></li>
 							<li><a th:href="@{/administrativo/clientes/listar}">Listar
 									Clientes</a></li>
 							<li><a th:href="@{/administrativo/estados/listar}">Listar
 									Estados</a></li>
+							<li><a th:href="@{/administrativo/fornecedores/listar}">Listar
+									Fornecedores</a></li>		
 							<li><a th:href="@{/administrativo/formapagamentos/listar}">Listar
 									Forma de Pagamentos</a></li>
 							<li><a th:href="@{/administrativo/funcionarios/listar}">Listar
@@ -117,6 +126,8 @@
 									Cadastrados</a></li>
 							<li><a th:href="@{/administrativo/relatorios/produto}">Produtos
 									Cadastrados</a></li>
+							<li><a th:href="@{/administrativo/relatorios/produto}">Estoque Produtos</a></li>
+							<li><a th:href="@{/administrativo/relatorios/produto}">Vendas por Período</a></li>		
 						</ul></li>
 			</div>
 		</aside>

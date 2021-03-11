@@ -10,15 +10,15 @@
 	<section id="main-content" layout:fragment="corpo">
 		<section class="wrapper">
 			<h3>
-				<i class="fa fa-angle-right"></i> Cadastrar Funcionários
+				<i class="fa fa-angle-right"></i> Cadastrar Fornecedores
 			</h3>
 			<!-- BASIC FORM ELELEMNTS -->
 			<div class="row mt">
 				<div class="col-lg-12">
 					<div class="form-panel">
 						<form class="form-horizontal style-form"
-							action="/administrativo/funcionarios/salvarFuncionario"
-							method="POST" th:object="${funcionario}">
+							action="/administrativo/fornecedores/salvarFornecedor"
+							method="POST" th:object="${fornecedor}">
 							<input type="hidden" class="form-control input-sm" id="id"
 								th:field="*{id}" readOnly="readonly" />
 							<div class="form-group">
@@ -29,32 +29,11 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-1" for="cidade">Papel:
-									<span class="required">*</span>
-								</label>
-								<div class="col-sm-6">
-									<select th:field="*{papeis}" class="form-control">
-										<option value="0">Selecione um Papel</option>
-										<option th:each="p: ${papeis}" th:value="${p.id}"
-											th:text="${p.nome}"></option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-1">CPF: <span
+								<label class="control-label col-sm-1">CNPJ: <span
 									class="required">*</span></label>
 								<div class="col-sm-6">
-									<input th:field="*{cpf}" id="name" required="required"
+									<input th:field="*{cnpj}" id="name" required="required"
 										type="text" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-1">Data de
-									Nascimento: <span class="required">*</span>
-								</label>
-								<div class="col-sm-6">
-									<input th:field="*{dtNascimento}" id="name" required="required"
-										type="date" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">
@@ -62,6 +41,14 @@
 									class="required">*</span></label>
 								<div class="col-sm-6">
 									<input th:field="*{telefone}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-1">E-mail: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{email}" id="name" required="required"
 										type="text" class="form-control">
 								</div>
 							</div>
@@ -82,6 +69,14 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="control-label col-sm-1">Bairro: <span
+									class="required">*</span></label>
+								<div class="col-sm-6">
+									<input th:field="*{bairro}" id="name" required="required"
+										type="text" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="control-label col-sm-1" for="cidade">Cidade:
 									<span class="required">*</span>
 								</label>
@@ -91,22 +86,6 @@
 										<option th:each="cid: ${cidades}" th:value="${cid.id}"
 											th:text="${cid.nome}"></option>
 									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-1">E-mail: <span
-									class="required">*</span></label>
-								<div class="col-sm-6">
-									<input th:field="*{email}" id="name" required="required"
-										type="text" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="control-label col-sm-1">Senha: <span
-									class="required">*</span></label>
-								<div class="col-sm-6">
-									<input th:field="*{senha}" id="name" required="required"
-										type="password" class="form-control">
 								</div>
 							</div>
 							<div class="form-group">

@@ -68,47 +68,46 @@
 											</tr>
 										</tbody>
 									</table>
-									<label class="control-label col-md-4" for="formapg">FORMA
-										DE PAGAMENTO: <span class="required">*</span>
-									</label>
-									<div class="col-6">
-										<select name="idForma" class="form-control">
-											<option th:each="f: ${formapg}" th:value="${f.id}"
-												th:text="${f.formaPagamento}"></option>
-										</select>
-									</div>
-									<div class="cart-collaterals">
-
-										<div class="cart_totals ">
-											<h2>TOTAL CARRINHO</h2>
-
-											<table cellspacing="0">
-												<tbody>
-													<tr class="cart-subtotal">
-														<th>Sub Total Carrinho</th>
-														<td><span th:text="${venda.valorTotal}"></span></td>
-													</tr>
-
-													<tr class="shipping">
-														<th>Frete</th>
-														<td>Frete Grátis</td>
-													</tr>
-
-													<tr class="order-total">
-														<th>Total Carrinho</th>
-														<td><strong><span
-																th:text="${venda.valorTotal}"></span></strong></td>
-													</tr>
-													<tr>
-														<td class="actions" colspan="6"><a href="/"><input
-																type="submit" value="Continuar Comprando"
-																name="update_cart" class="button"></a>
-															<button type="submit"
-																class="checkout-button button alt wc-forward">FINALIZAR</button></td>
-													</tr>
-												</tbody>
-											</table>
+									<div class="cart-totals col-md-6">
+										<label class="control-label col-md-12" for="formapg">FORMA
+											DE PAGAMENTO: <span class="required">*</span>
+										</label>
+										<div class="col-md-12">
+											<select name="idForma" class="form-control">
+												<option th:each="f: ${formapg}" th:value="${f.id}"
+													th:text="${f.formaPagamento}"></option>
+											</select>
 										</div>
+									</div>
+									<div class="cart_totals ">
+										<h2>TOTAL CARRINHO</h2>
+
+										<table class="col-md-12">
+											<tbody>
+												<tr class="cart-subtotal">
+													<th>Sub Total Carrinho</th>
+													<td><span th:text="${venda.valorTotal}"></span></td>
+												</tr>
+
+												<tr class="shipping">
+													<th>Frete</th>
+													<td>Frete Grátis</td>
+												</tr>
+
+												<tr class="order-total">
+													<th>Total Carrinho</th>
+													<td><strong><span
+															th:text="${venda.valorTotal}"></span></strong></td>
+												</tr>
+												<tr>
+													<td class="actions" colspan="6"><a href="/"><input
+														type="button" value="Continuar Comprando"
+														name="update_cart" class="button"></a>
+														<button type="submit"
+															class="checkout-button button alt wc-forward">FINALIZAR</button></td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</form>
 							</div>

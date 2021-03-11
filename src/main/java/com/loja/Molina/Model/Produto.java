@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Produto implements Serializable {
@@ -17,7 +18,8 @@ public class Produto implements Serializable {
 	private String nomeProduto;
 	private Double valor;
 	private String marca;
-	private String categoria;
+	@ManyToOne
+	private Categoria categoria;
 	private Double quantidadeEstoque = 0.;
 	private String imagem;
 
@@ -53,11 +55,11 @@ public class Produto implements Serializable {
 		this.marca = marca;
 	}
 
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 

@@ -718,6 +718,13 @@ input[type="submit"], button[type=submit] {
     padding: 11px 20px;
     text-transform: uppercase;
 }
+input[type="button"], button[type=button] {
+    background: none repeat scroll 0 0 #5a88ca;
+    border: medium none;
+    color: #fff;
+    padding: 11px 20px;
+    text-transform: uppercase;
+}
 input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .single-sidebar input[type="text"] {
     margin-bottom: 10px;
@@ -945,6 +952,11 @@ td.actions div.coupon {
     margin-bottom: 50px;
     width: 40%;
 }
+.cart_totals-1 {
+    float: left;
+    margin-bottom: 50px;
+    width: 100%;
+}
 .cart-collaterals h2 {
     color: #5a88ca;
     font-size: 25px;
@@ -967,12 +979,30 @@ div.cart-collaterals ul.products li.product {
     border-right: 1px solid #ddd;
     width: 100%;
 }
+
+.cart_totals-1 table {
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    width: 100%;
+}
+
 .cart_totals table th, .cart_totals table td {
     border-left: 1px solid #ddd;
     border-top: 1px solid #ddd;
     padding: 10px;
+    width: 100%;
+}
+
+.cart_totals-1 table th, .cart_totals-1 table td {
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
 }
 .cart_totals table th {
+    background: none repeat scroll 0 0 #f4f4f4;
+}
+.cart_totals-1 table th {
     background: none repeat scroll 0 0 #f4f4f4;
 }
 .onsale {
@@ -1105,8 +1135,6 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 #login-form-wrap input[type="submit"] {
     margin-bottom: 15px;
 }
-
-
 
 .single-shop-product h2 {
     font-size: 20px;

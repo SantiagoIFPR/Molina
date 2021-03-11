@@ -10,7 +10,7 @@
 	<section id="main-content" layout:fragment="corpo">
 		<section class="wrapper">
 			<h3>
-				<i class="fa fa-angle-right"></i>Listar Permissões
+				<i class="fa fa-angle-right"></i>Listar Produtos
 			</h3>
 			<div class="row mb">
 				<!-- page start-->
@@ -39,7 +39,7 @@
 									<td th:text="${prod.nomeProduto}"></td>
 									<td th:text="${prod.valor}"></td>
 									<td th:text="${prod.marca}"></td>
-									<td th:text="${prod.categoria}"></td>
+									<td th:text="${prod.categoria.nome}"></td>
 									<td th:text="${prod.quantidadeEstoque}"></td>
 									<td><img
 										th:src="@{/administrativo/produtos/mostrarImagem/{imagem}(imagem=${prod.imagem})}"
