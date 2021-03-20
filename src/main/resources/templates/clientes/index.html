@@ -32,9 +32,10 @@
 								<img class="img-fluid"
 									th:src="@{/mostrarImagem/{imagem}(imagem=${produto.imagem})}">
 							</div>
-							<h2>
+							<br>
+							<h4>
 								<a><span th:text="${produto.nomeProduto}"></span></a>
-							</h2>
+							</h4>
 							<div class="product-carousel-price">
 								<ins>
 									R$<span th:text="${produto.valor}"></span>

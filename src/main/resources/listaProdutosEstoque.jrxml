@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listaClientes" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0af5cde7-898e-452b-9bbc-b6e6b796e48b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     produto."id" AS produto_id,
+     produto."nome_produto" AS produto_nome_produto,
+     produto."quantidade_estoque" AS produto_quantidade_estoque,
+     produto."categoria_id" AS produto_categoria_id,
+     categoria."nome" AS categoria_nome
+FROM
+     "public"."categoria" categoria INNER JOIN "public"."produto" produto ON categoria."id" = produto."categoria_id"
+WHERE
+     produto."quantidade_estoque" > 0
+ORDER BY
+     produto.nome_produto ASC]]>
+	</queryString>
+	<field name="produto_id" class="java.lang.Long"/>
+	<field name="produto_nome_produto" class="java.lang.String"/>
+	<field name="produto_quantidade_estoque" class="java.lang.Double"/>
+	<field name="produto_categoria_id" class="java.lang.Long"/>
+	<field name="categoria_nome" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="106">
+			<staticText>
+				<reportElement x="120" y="29" width="352" height="16" uuid="181cb123-ee5b-4f47-ac21-4251c4100677"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Rua José Mantuani, 760, Centro, Marilena-PR. CEP: 87960-000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="45" width="267" height="16" uuid="3f040489-4eff-4f2f-a9ae-11589f72ef7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Telefone: (44)99766-0895]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="61" width="255" height="34" uuid="bab6afad-dc65-4b71-8363-9baa0b12263a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTOQUE POSITIVO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="202" y="1" width="177" height="26" uuid="0c894ea8-625a-4b6a-b781-5f793ba681c8"/>
+				<imageExpression><![CDATA["C:\\Users\\Karen Violim\\Desktop\\Molina\\src\\main\\resources\\static\\clientes\\img\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="33">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="1" y="15" width="62" height="13" uuid="a5fb14b7-f8d9-4288-ab63-22b4c09528d8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produto_id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="411" y="15" width="144" height="13" uuid="7bafd8e3-f361-4d6e-83e4-093bd1c441e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produto_quantidade_estoque}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="411" y="0" width="144" height="15" forecolor="#000000" backcolor="#99CCFF" uuid="de8a9274-8ae0-4466-a9ea-fa6931ae5586"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTD. ESTOQUE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="63" y="15" width="219" height="13" uuid="3b062731-6ae7-4f9b-aa30-d9b4e0781d6b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produto_nome_produto}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="63" y="0" width="219" height="15" forecolor="#000000" backcolor="#99CCFF" uuid="ff3130eb-4625-4b4a-a790-2363d52044a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOME PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="63" height="15" forecolor="#000000" backcolor="#99CCFF" uuid="b90e4c16-314f-4af0-85c4-27efab808d62"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓD.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="31" width="555" height="1" forecolor="#999999" uuid="430d3de6-4115-4cc4-9cec-f3866f7fd820"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="282" y="0" width="129" height="15" forecolor="#000000" backcolor="#99CCFF" uuid="2eef3b1a-6fbb-49e2-af86-9544088eaa15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CATEGORIA]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="282" y="15" width="129" height="13" uuid="0c6b36d9-3d41-4727-ae86-e0196578b0ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoria_nome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="63">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="15" width="515" height="13" backcolor="#99CCFF" uuid="74026af9-349c-435c-9c57-3dc7f51b49c1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="514" y="15" width="40" height="13" backcolor="#99CCFF" uuid="e712c2c5-51d0-4bcc-ba89-d81cd2abffe6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy HH:mm">
+				<reportElement x="1" y="49" width="177" height="14" uuid="065856a4-52cc-4bb9-8892-4083e6b0264f"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="386" y="49" width="163" height="14" uuid="416d5c98-0515-4732-8253-7dd70c2efb60"/>
+				<textElement verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Desenvolvido por Santiago Molina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="543" y="46" width="12" height="13" uuid="a6ea9186-90cc-417c-aea3-751856159eeb"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[®]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="30">
+			<staticText>
+				<reportElement mode="Opaque" x="410" y="8" width="105" height="13" forecolor="#000000" backcolor="#FFFFFF" uuid="472532fe-5e7c-49bf-8dce-a23fb97c1002"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE REGISTROS:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="515" y="8" width="39" height="13" uuid="063c35bb-a225-4551-b0bd-bb2cde25c602"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

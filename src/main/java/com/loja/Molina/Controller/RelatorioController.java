@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loja.Molina.Conexao;
+import com.loja.Molina.Model.DataContainer;
+import com.loja.Molina.Model.Filtros;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -91,46 +93,73 @@ public class RelatorioController implements Serializable {
 		}
 	}
 	
-//	// CHAMADA PARA A PÁGINA QUE TEM O BOTÃO PARA GERAR O RELATÓRIO DE VENDAS POR
-//	// PERÍODO
-//	@GetMapping("administrativo/relatorios/vendas")
-//	public String relVendas(Model model, final DataContainer dataContainer) {
-//		if(dataContainer.getDateTime()==null) {
-//			dataContainer.setDateTime(LocalDateTime.now());
-//		}
-//		model.addAttribute("filtro", new Filtros());
-//		return "/administrativo/relatorios/vendas";
-//	}
-//
-//
-//	// MÉTODO QUE GERA O RELATÓRIO DE VENDAS POR PERÍODO
-//	@PostMapping(value = "/administrativo/rel/vendas-pdf")
-//	public void gerarRelatorioVendas(@ModelAttribute("filtro") Filtros filtro, HttpServletResponse response,
-//			HttpServletRequest request) {
-////		System.out.println(request.getParameter("dtInicio"));
-////		System.out.println(filtro.getDtInicio().substring(0, 10));
-////		System.out.println(filtro.getDtFim());
-//		try {
-//			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-//			HashMap<String, Object> p = new HashMap<>();
-//			p.put("dtInicio", getDataFormatada(filtro.getDtInicio()));
-//			p.put("dtFim", getDataFormatada(filtro.getDtFim()));
-//
-//			InputStream stream = this.getClass().getResourceAsStream("/vendas.jrxml");
-//
-//			JasperReport report = JasperCompileManager.compileReport(stream);
-//			JasperPrint jasperPrint = JasperFillManager.fillReport(report, p, Conexao.getConection());
-//
-//			response.setContentType("application/pdf");
-//			response.setHeader("Content-disposition", "inline; filename=\"Relatório de Vendas.pdf\"");
-//
-//			final OutputStream outStream = response.getOutputStream();
-//			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	// CHAMADA PARA A PÁGINA QUE TEM O BOTÃO PARA GERAR O RELATÓRIO DE PRODUTOS
+		@GetMapping("administrativo/relatorios/estoque")
+		public ModelAndView relProdutoEstoque() {
+			ModelAndView mv = new ModelAndView("/administrativo/relatorios/estoque");
+			return mv;
+		}
+		
+		// MÉTODO QUE GERA O RELATÓRIO DE PRODUTOS
+		@GetMapping("/administrativo/estoque-pdf")
+		public void gerarRelatorioEstoque(HttpServletResponse response) {
+			try {
+				InputStream stream = this.getClass().getResourceAsStream("/listaProdutosEstoque.jrxml");
+				
+				JasperReport report = JasperCompileManager.compileReport(stream);
+				JasperPrint jasperPrint = JasperFillManager.fillReport(report, null, Conexao.getConection());
+				
+				response.setContentType("application/pdf");
+				response.setHeader("Content-disposition", "inline; filename=\"Estoque Positivo.pdf\"");
+				
+				final OutputStream outStream = response.getOutputStream();
+				JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
+	// CHAMADA PARA A PÁGINA QUE TEM O BOTÃO PARA GERAR O RELATÓRIO DE VENDAS POR
+	// PERÍODO
+	@GetMapping("administrativo/relatorios/vendas")
+	public String relVendas(Model model, final DataContainer dataContainer) {
+		if(dataContainer.getDateTime()==null) {
+			dataContainer.setDateTime(LocalDateTime.now());
+		}
+		model.addAttribute("filtro", new Filtros());
+		return "/administrativo/relatorios/vendas";
+	}
+
+
+	// MÉTODO QUE GERA O RELATÓRIO DE VENDAS POR PERÍODO
+	@PostMapping(value = "/administrativo/rel/vendas-pdf")
+	public void gerarRelatorioVendas(@ModelAttribute("filtro") Filtros filtro, HttpServletResponse response,
+			HttpServletRequest request) {
+//		System.out.println(request.getParameter("dtInicio"));
+//		System.out.println(filtro.getDtInicio().substring(0, 10));
+//		System.out.println(filtro.getDtFim());
+		try {
+			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+			HashMap<String, Object> p = new HashMap<>();
+			p.put("dtInicio", getDataFormatada(filtro.getDtInicio()));
+			p.put("dtFim", getDataFormatada(filtro.getDtFim()));
+
+			InputStream stream = this.getClass().getResourceAsStream("/vendas.jrxml");
+
+			JasperReport report = JasperCompileManager.compileReport(stream);
+			JasperPrint jasperPrint = JasperFillManager.fillReport(report, p, Conexao.getConection());
+
+			response.setContentType("application/pdf");
+			response.setHeader("Content-disposition", "inline; filename=\"Relatório de Vendas.pdf\"");
+
+			final OutputStream outStream = response.getOutputStream();
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	private Date getDataFormatada(String dataString) throws ParseException {
 		SimpleDateFormat modelo = new SimpleDateFormat("yyyy-MM-dd");

@@ -1,25 +1,35 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{clientes/layout}">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Molina Store</title>
-<link
-	href="/maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="/maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="/cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/css/finalizar.css">
-<script type="text/javascript" src="/js/finalizar.js"></script>
 </head>
 <body>
-	<section class="error_section">
-		<p class="error_section_subtitle">Parabéns, compra finalizada com sucesso!</p><br><br><br><br><br><br>
-		<p></p>
-		<a href="/" class="btn">Voltar para a Página Inicial</a>
+	<!-- Start Slider Area -->
+	<section layout:fragment="corpo">
+
+		<div class="single-product-area"
+			style="padding-top: 55px; padding-bottom: 80px">
+			<div class="container">
+				<form th:object="${venda}">
+				<div class="row col-md-12 text-center pt-5">
+					<img src="/clientes/img/cart.jpg">
+					<h2
+						style="font-family: Libre Baskerville; font-size: 72px; color: black">
+						Parabéns!</h2>
+					<p class="lead mb-5"
+						style="font-family: Muli, sans-serif; color: black">Seu pedido
+						foi concluído com sucesso!
+					<p>
+						<a href="/" class="btn btn-sm btn-outline-black"
+							style="background: transparent; border-color: #000000; color: #000000; padding-top: 10px; padding-bottom: 10px; padding-left: 15px; padding-right: 15px; font-size: 11px; font-family: Muli, sans-serif">Voltar
+							para a Página Inicial</a>
+				</div>
+				</form>
+			</div>
+		</div>
 	</section>
+
 </body>
 </html>
