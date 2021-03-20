@@ -4,6 +4,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Molina Store</title>
+<script type="text/javascript">
+function Nova()
+{
+	alert("Tem certeza que deseja cancelar?")
+	location.href="/administrativo/fornecedores/listar"
+}
+</script>
 </head>
 <body>
 	<!--main content start-->
@@ -91,7 +98,7 @@
 							<div class="form-group">
 								<div class="col-sm-6">
 									<button id="send" type="submit" class="btn btn-success">Salvar</button>
-									<button type="button" class="btn btn-primary">Cancelar</button>
+									<button type="button" class="btn btn-primary" onclick="Nova()">Cancelar</button>
 								</div>
 							</div>
 						</form>
